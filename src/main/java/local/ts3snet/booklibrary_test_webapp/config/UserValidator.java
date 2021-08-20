@@ -1,6 +1,6 @@
 package local.ts3snet.booklibrary_test_webapp.config;
 
-import local.ts3snet.booklibrary_test_webapp.entity.User;
+import local.ts3snet.booklibrary_test_webapp.entity.UserEntity;
 import local.ts3snet.booklibrary_test_webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,28 +19,32 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return User.class.equals(aClass);
+        return UserEntity.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        User user = (User) o;
+        final String username = "username";
+        final String password = "password";
+        final String passwordConfirm = "passwordConfirm";
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        UserEntity user = (UserEntity) o;
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, username, "NotEmpty");
         if (user.getUsername().length() < 5 || user.getUsername().length() > 32) {
-            errors.rejectValue("username", "Size.userForm.username");
+            errors.rejectValue(username, "Size.userForm.username");
         }
         if (userService.findByUsername(user.getUsername()) != null) {
-            errors.rejectValue("username", "Duplicate.userForm.username");
+            errors.rejectValue(username, "Duplicate.userForm.username");
         }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, password, "NotEmpty");
         if (user.getPassword().length() < 4 || user.getPassword().length() > 32) {
-            errors.rejectValue("password", "Size.userForm.password");
+            errors.rejectValue(password, "Size.userForm.password");
         }
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
-            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+            errors.rejectValue(passwordConfirm, "Diff.userForm.passwordConfirm");
         }
     }
 }

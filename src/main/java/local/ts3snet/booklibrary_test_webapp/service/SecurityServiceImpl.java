@@ -2,6 +2,7 @@ package local.ts3snet.booklibrary_test_webapp.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SecurityServiceImpl implements SecurityService{
+public class SecurityServiceImpl implements SecurityService {
     private AuthenticationManager authenticationManager;
     @Autowired
     public void setAuthenticationManager(AuthenticationManager authenticationManager) {
@@ -45,7 +46,9 @@ public class SecurityServiceImpl implements SecurityService{
 
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-            logger.debug(String.format("Auto login %s successfully!", username));
+             logger.debug(
+                     MarkerFactory.getMarker("DEBUG"),
+                     "Auto login {} successfully!", username);
         }
     }
 }

@@ -1,9 +1,11 @@
 package local.ts3snet.booklibrary_test_webapp.controller;
 
 import local.ts3snet.booklibrary_test_webapp.config.UserValidator;
-import local.ts3snet.booklibrary_test_webapp.entity.User;
+import local.ts3snet.booklibrary_test_webapp.dto.UserDTO;
+import local.ts3snet.booklibrary_test_webapp.entity.UserEntity;
 import local.ts3snet.booklibrary_test_webapp.service.SecurityService;
 import local.ts3snet.booklibrary_test_webapp.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +20,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @Autowired
     private SecurityService securityService;
-   /* public void setSecurityService(SecurityService securityService) {
+    @Autowired
+    public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
-    }*/
+    }
 
     private UserValidator userValidator;
     @Autowired
@@ -32,13 +34,17 @@ public class UserController {
 
     @GetMapping("/registration")
     public String registration(Model model) {
-        model.addAttribute("userForm", new User());
+        model.addAttribute("userForm", new UserEntity());
 
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("userForm") UserDTO userDTO, BindingResult bindingResult) {
+
+        UserEntity userForm = new UserEntity();
+        BeanUtils.copyProperties(userDTO, userForm);
+
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {

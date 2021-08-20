@@ -3,31 +3,31 @@ package local.ts3snet.booklibrary_test_webapp.entity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Collection;
 
 @Entity
 @Table(name = "roles")
-public class Role implements GrantedAuthority {
+public class RoleEntity implements GrantedAuthority {
     @Id
     private Long id;
 
     private String rolename;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private Collection<UserEntity> users;
 
-    public Role() {}
+    public RoleEntity() {}
 
     @Override
     public String getAuthority() {
         return getRoleName();
     }
 
-    public Role(Long id) {
+    public RoleEntity(Long id) {
         this.id = id;
     }
 
-    public Role(Long id, String rolename) {
+    public RoleEntity(Long id, String rolename) {
         this.id = id;
         this.rolename = rolename;
     }
@@ -48,11 +48,11 @@ public class Role implements GrantedAuthority {
         this.rolename = name;
     }
 
-    public Set<User> getUsers() {
+    public Collection<UserEntity> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(Collection<UserEntity> users) {
         this.users = users;
     }
 }
