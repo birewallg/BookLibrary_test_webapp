@@ -3,23 +3,25 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
     <title>Главная</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
 </head>
 <body>
+<div style="text-align: center;">
 <div>
     <h3>${pageContext.request.userPrincipal.name}</h3>
     <sec:authorize access="!isAuthenticated()">
-        <h4><a href="/login">Login</a></h4>
-        <h4><a href="/registration">Sign in</a></h4>
+        <h4><a href="${pageContext.request.contextPath}/login">Login</a></h4>
+        <h4><a href="${pageContext.request.contextPath}/registration">Sign in</a></h4>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
-        <h4><a href="/logout">Logout</a></h4>
+        <h4><a href="${pageContext.request.contextPath}/logout">Logout</a></h4>
     </sec:authorize>
-    <h4><a href="/news">Pages</a></h4>
+    <h4><a href="${pageContext.request.contextPath}/content">Pages</a></h4>
+</div>
 </div>
 </body>
 </html>

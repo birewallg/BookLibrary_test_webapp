@@ -1,4 +1,4 @@
-package local.ts3snet.booklibrary_test_webapp.config;
+package local.ts3snet.booklibrary_test_webapp.config.validator;
 
 import local.ts3snet.booklibrary_test_webapp.entity.UserEntity;
 import local.ts3snet.booklibrary_test_webapp.service.UserService;
@@ -23,12 +23,12 @@ public class UserValidator implements Validator {
     }
 
     @Override
-    public void validate(Object o, Errors errors) {
+    public void validate(Object object, Errors errors) {
         final String username = "username";
         final String password = "password";
         final String passwordConfirm = "passwordConfirm";
 
-        UserEntity user = (UserEntity) o;
+        UserEntity user = (UserEntity) object;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, username, "NotEmpty");
         if (user.getUsername().length() < 5 || user.getUsername().length() > 32) {

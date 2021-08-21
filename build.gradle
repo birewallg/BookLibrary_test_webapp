@@ -9,6 +9,7 @@ version '2.5'
 
 sourceCompatibility = 1.8
 
+
 repositories {
     mavenCentral()
 }
@@ -16,25 +17,25 @@ repositories {
 dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.4'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.4'
-
-    implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.5.2'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.4'
-
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-    implementation 'javax.servlet:jstl'
-
-    implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.5.2'
-
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.4'
+    implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.5.2'
+    implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.5.2'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.5.4'
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.5.6.Final'
-
-    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23.jre7'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.2'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.2'
-
-    //implementation group: 'javax.servlet.jsp.jstl', name: 'jstl', version: '1.2'
     implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+
+    //implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.7'
+    //implementation group: 'javax.servlet', name: 'javax.servlet-api', version: ''
+    //implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.50'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'javax.servlet:jstl:1.2'
+
+    //implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:10.0.8'
+    //implementation 'javax.servlet:jstl:1.2'
 }
 
 test {

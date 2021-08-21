@@ -1,4 +1,4 @@
-package local.ts3snet.booklibrary_test_webapp.config;
+package local.ts3snet.booklibrary_test_webapp.config.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,10 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserDetailsService userDetailsService;
-    @Qualifier("userDetailsServiceImpl")
-    @Autowired
-    public void setUserDetailsService(UserDetailsService userDetailsService) {
+    private final UserDetailsService userDetailsService;
+
+    public WebSecurityConfig(@Qualifier("UserDetailsServiceImpl") UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
@@ -41,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/registration").not().fullyAuthenticated()
                 //Доступ только для пользователей с ролью Администратор
                 //.antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/news").hasRole("USER")
+                .antMatchers("/content").hasRole("USER")
                 //Доступ разрешен всем пользователей
                 .antMatchers("/resources/**", "/registration", "/index", "/", "/welcome").permitAll()
                 //Все остальные страницы требуют аутентификации

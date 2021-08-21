@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+<div style="text-align: center;">
 <div class="container">
     <form method="POST" action="${contextPath}/login" class="form-signin">
         <h2 class="form-heading">Log in</h2>
@@ -28,13 +28,13 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+            <h4 class="text-center"><a href="${pageContext.request.contextPath}/registration">Create an account</a></h4>
         </div>
     </form>
     <br>
     <a href="/">Back</a>
 </div>
-
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>

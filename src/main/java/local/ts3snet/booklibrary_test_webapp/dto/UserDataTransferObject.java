@@ -2,7 +2,7 @@ package local.ts3snet.booklibrary_test_webapp.dto;
 
 import java.io.Serializable;
 
-public class UserDTO implements Serializable {
+public class UserDataTransferObject implements Serializable {
     private static final long serialVersionUID = 4865903039190150223L;
 
     private Long id;

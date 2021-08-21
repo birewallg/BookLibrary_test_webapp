@@ -3,16 +3,18 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">>
 <head>
     <meta charset="utf-8">
     <title>news</title>
 </head>
 <body>
+<div style="text-align: center;">
 <div>
     <h2>page <br> only auth users!</h2>
     <br>
-    <a href="/">Back</a>
+    <a href="${pageContext.request.contextPath}/">Back</a>
+</div>
 </div>
 </body>
 </html>

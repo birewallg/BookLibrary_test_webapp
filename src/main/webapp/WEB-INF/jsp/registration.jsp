@@ -13,9 +13,10 @@
 </head>
 
 <body>
-
+    <div style="text-align: center;">
 <div class="container">
 
+    <%--@elvariable id="userForm" type="net"--%>
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
         <h2 class="form-signin-heading">Create your account</h2>
         <spring:bind path="username">
@@ -46,7 +47,7 @@
     <br>
     <a href="/login">Back</a>
 </div>
-
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
