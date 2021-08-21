@@ -1,5 +1,6 @@
-package local.ts3snet.booklibrary_test_webapp.entity;
+package local.ts3snet.booklibrary_test_webapp.entity.users;
 
+import local.ts3snet.booklibrary_test_webapp.entity.library.AuthorEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -27,6 +28,10 @@ public class UserEntity implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "r_role_id")
     )
     private Collection<RoleEntity> roles;
+
+    @OneToOne (optional=true, cascade=CascadeType.ALL)
+    @JoinColumn (name="author_id", nullable = true)
+    private AuthorEntity isAuthor;
 
     public Long getId() {
         return id;

@@ -1,6 +1,6 @@
 package local.ts3snet.booklibrary_test_webapp.service;
 
-import local.ts3snet.booklibrary_test_webapp.entity.UserEntity;
+import local.ts3snet.booklibrary_test_webapp.entity.users.UserEntity;
 import local.ts3snet.booklibrary_test_webapp.repository.RoleRepository;
 import local.ts3snet.booklibrary_test_webapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

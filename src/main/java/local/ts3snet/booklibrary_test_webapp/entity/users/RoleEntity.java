@@ -1,4 +1,4 @@
-package local.ts3snet.booklibrary_test_webapp.entity;
+package local.ts3snet.booklibrary_test_webapp.entity.users;
 
 import org.springframework.security.core.GrantedAuthority;
 

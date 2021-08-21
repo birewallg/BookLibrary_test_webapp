@@ -2,13 +2,15 @@ package local.ts3snet.booklibrary_test_webapp.controller;
 
 import local.ts3snet.booklibrary_test_webapp.config.validator.UserValidator;
 import local.ts3snet.booklibrary_test_webapp.dto.UserDataTransferObject;
-import local.ts3snet.booklibrary_test_webapp.entity.UserEntity;
+import local.ts3snet.booklibrary_test_webapp.entity.users.UserEntity;
 import local.ts3snet.booklibrary_test_webapp.service.UserService;
 import local.ts3snet.booklibrary_test_webapp.service.security.SecurityService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -31,6 +33,13 @@ public class RegistrationController {
     @Autowired
     public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
+    }
+
+    @GetMapping("/registration")
+    public String registration(Model model) {
+        model.addAttribute("userForm", new UserEntity());
+
+        return "registration";
     }
 
     @PostMapping("/registration")
