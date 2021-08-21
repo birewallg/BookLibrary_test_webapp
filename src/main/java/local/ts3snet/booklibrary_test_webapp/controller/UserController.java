@@ -1,19 +1,11 @@
 package local.ts3snet.booklibrary_test_webapp.controller;
 
-import local.ts3snet.booklibrary_test_webapp.entity.UserEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
-
-    @GetMapping("/registration")
-    public String registration(Model model) {
-        model.addAttribute("userForm", new UserEntity());
-
-        return "registration";
-    }
 
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
